@@ -12,4 +12,6 @@ interface MainView extends TiView {
 
     //@CallOnMainThread
     void showAddButton();
+
+    void makeToast(String message);
 }

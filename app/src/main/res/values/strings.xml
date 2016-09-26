@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">9Goals</string>
     <string name="lorem_ipsum">fffff</string>
+    <string name="edit_goal_hint">Goal name</string>
+    <string name="save_button">Save</string>
+    <string name="radio_main">Main goal</string>
+    <string name="radio_secondary">Secondary goal</string>
+    <string name="radio_goal">Over goal</string>
+    <string name="set_goal_type">Set goal type</string>
+    <string name="set_goal_name">Set goal name</string>
 </resources>

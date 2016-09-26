@@ -23,15 +23,22 @@
     app:fabToolbarId="@+id/fabtoolbar_toolbar"
          android:background="@drawable/wllppr">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
     <ListView
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="120dp"
-        android:background="#efeff4"/>
+        android:background="#f3f5f7"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+        android:background="@drawable/drop_shadow"/></LinearLayout>
 
         <RelativeLayout
-            xmlns:fab="http://schemas.android.com/apk/res-auto"
             android:id="@id/fabtoolbar_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">

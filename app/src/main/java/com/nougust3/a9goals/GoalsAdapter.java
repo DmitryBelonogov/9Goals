@@ -52,15 +52,17 @@ class GoalsAdapter extends BaseAdapter {
 
         textView.setText(goal.getName());
 
-        if(goal.getType()==1){
+        if(goal.getType() == 1) {
             textView.setTextColor(ContextCompat.getColor(context, R.color.MainGoal));
             textView.setTypeface(Typeface.create("sans-serif-medium", Typeface.NORMAL));
         }
-        if(goal.getType()==2){
+
+        if(goal.getType() == 2) {
             textView.setTextColor(ContextCompat.getColor(context, R.color.SecongaryGoal));
             textView.setTypeface(Typeface.create("sans-serif", Typeface.NORMAL));
         }
-        if(goal.getType()==3){
+
+        if(goal.getType() == 3) {
             textView.setTextColor(ContextCompat.getColor(context, R.color.OverGoal));
             textView.setTypeface(Typeface.create("sans-serif-light", Typeface.NORMAL));
         }

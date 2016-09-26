@@ -76,7 +76,9 @@ class Model {
         goals.clear();
 
         for (int i = 0; i < size; i++) {
-            Goal goal= new Goal(preferences.getString("Name2" + i, null),preferences.getInt("Type2" + i, 1), preferences.getBoolean("State2" + i, false));
+            Goal goal= new Goal(preferences.getString("Name2" + i, null),
+                    preferences.getInt("Type2" + i, 1),
+                    preferences.getBoolean("State2" + i, false));
             goals.add(goal);
         }
     }

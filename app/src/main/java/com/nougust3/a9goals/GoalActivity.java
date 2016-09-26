@@ -4,10 +4,13 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 
 public class GoalActivity extends AppCompatActivity {
 
@@ -24,7 +27,7 @@ public class GoalActivity extends AppCompatActivity {
         RadioButton radioMain = (RadioButton) findViewById(R.id.radio_main);
         RadioButton radioSecondary = (RadioButton) findViewById(R.id.radio_secondry);
         RadioButton radioOver = (RadioButton) findViewById(R.id.radio_over);
-        final EditText goalEdit = (EditText) findViewById(R.id.editText);
+        final EditText goalEdit = (EditText) findViewById(R.id.editGoal);
 
         answerIntent = new Intent();
 
@@ -55,6 +58,16 @@ public class GoalActivity extends AppCompatActivity {
         radioMain.setOnClickListener(listener);
         radioSecondary.setOnClickListener(listener);
         radioOver.setOnClickListener(listener);
+
+        goalEdit.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                answerIntent.putExtra(GOAL, goalEdit.getText().toString());
+                setResult(RESULT_OK, answerIntent);
+                finish();
+                return false;
+            }
+        });
     }
 
     View.OnClickListener listener = new View.OnClickListener() {

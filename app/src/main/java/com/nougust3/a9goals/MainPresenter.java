@@ -21,6 +21,11 @@ class MainPresenter extends TiPresenter<MainView> {
     }
 
     void addGoal(String goal, int type) {
+        if(isAlreadyExist(goal)) {
+            getView().makeToast("Goal alredy exist!");
+            return;
+        }
+
         goalsModel.appendGoal(goal, type);
         goalsModel.loadGoals();
         getView().updateGoalsList();
@@ -34,7 +39,7 @@ class MainPresenter extends TiPresenter<MainView> {
         return goalsModel.countByType(type);
     }
 
-    Boolean checkGoalsDate() {
+    private Boolean checkGoalsDate() {
         Calendar calendar = Calendar.getInstance();
         int day = calendar.get(Calendar.DAY_OF_WEEK);
         return day == goalsModel.getDate();
@@ -53,6 +58,15 @@ class MainPresenter extends TiPresenter<MainView> {
         }
     }
 
+    private Boolean isAlreadyExist(String name) {
+        for (Goal goal: goalsModel.getGoals()) {
+            if(goal.getName().equals(name)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     void changeGoalState() {
         getGoals().get(selectedId).changeState();
         goalsModel.saveGoals();
@@ -64,6 +78,10 @@ class MainPresenter extends TiPresenter<MainView> {
         super.onCreate();
         goalsModel = new Model(context);
         goalsModel.loadGoals();
+
+        if(!checkGoalsDate()) {
+            getView().makeToast("Select new goals today!");
+        }
     }
 
     @Override

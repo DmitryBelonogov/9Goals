@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.github.fafaldo.fabtoolbar.widget.FABToolbarLayout;
 import net.grandcentrix.thirtyinch.TiActivity;
@@ -120,6 +121,12 @@ public class MainActivity
         intent.putExtra("OVER_COUNT", presenter.countByType(3));
 
         startActivityForResult(intent, RESULT);
+    }
+
+    @Override
+    public void makeToast(String message) {
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT)
+                .show();
     }
 
     @Override
