@@ -6,7 +6,7 @@
     <color name="colorAccent">#FF4081</color>
 
 
-    <color name="MainGoal">#161722</color>
-    <color name="SecongaryGoal">#464755</color>
-    <color name="OverGoal">#66677f</color>
+    <color name="MainGoal">#ff000000</color>
+    <color name="SecongaryGoal">#c8000000</color>
+    <color name="OverGoal">#bb000000</color>
 </resources>

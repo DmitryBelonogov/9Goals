@@ -8,7 +8,7 @@
     <ImageView
         android:id="@+id/imageView"
         tools:ignore="ContentDescription"
-        android:src="@drawable/ic_checkbox_blank_circle_grey600_24dp"
+        android:src="@drawable/ic_done_grey_700_24dp"
         android:layout_height="24dp"
         android:layout_width="24dp"
         android:layout_margin="12dp" />

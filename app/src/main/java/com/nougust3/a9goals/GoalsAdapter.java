@@ -68,10 +68,12 @@ class GoalsAdapter extends BaseAdapter {
         }
 
         if(goal.getState()) {
-            (view.findViewById(R.id.item_layout)).setAlpha(.3f);
+            (view.findViewById(R.id.imageView)).setAlpha(.8f);
+            (view.findViewById(R.id.textView)).setAlpha(.5f);
         }
         else {
-            (view.findViewById(R.id.item_layout)).setAlpha(1.f);
+            (view.findViewById(R.id.textView)).setAlpha(1.f);
+            (view.findViewById(R.id.imageView)).setAlpha(.0f);
         }
 
         return view;
