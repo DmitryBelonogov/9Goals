@@ -1,20 +1,17 @@
 package com.nougust3.a9goals;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class GoalsAdapter extends BaseAdapter {
+class GoalsAdapter extends BaseAdapter {
 
     private LayoutInflater inflater;
     private ArrayList<Goal> goals;
@@ -24,10 +21,6 @@ public class GoalsAdapter extends BaseAdapter {
         this.context = context;
         this.goals = goals;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    }
-
-    public Boolean getState(int position) {
-        return goals.get(position).getState();
     }
 
     @Override

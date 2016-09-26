@@ -5,6 +5,7 @@ import android.content.Context;
 import net.grandcentrix.thirtyinch.TiPresenter;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 class MainPresenter extends TiPresenter<MainView> {
     private Context context;
@@ -24,9 +25,19 @@ class MainPresenter extends TiPresenter<MainView> {
         goalsModel.loadGoals();
         getView().updateGoalsList();
 
-        if(goalsModel.getGoalsCount() > 8) {
+        if(goalsModel.countGoals() > 8) {
             getView().hideAddButton();
         }
+    }
+
+    int countByType(int type) {
+        return goalsModel.countByType(type);
+    }
+
+    Boolean checkGoalsDate() {
+        Calendar calendar = Calendar.getInstance();
+        int day = calendar.get(Calendar.DAY_OF_WEEK);
+        return day == goalsModel.getDate();
     }
 
     void selectGoal(int id) {
@@ -37,7 +48,7 @@ class MainPresenter extends TiPresenter<MainView> {
         goalsModel.remove(selectedId);
         getView().updateGoalsList();
 
-        if(goalsModel.getGoalsCount() <= 9) {
+        if(goalsModel.countGoals() <= 9) {
             getView().showAddButton();
         }
     }

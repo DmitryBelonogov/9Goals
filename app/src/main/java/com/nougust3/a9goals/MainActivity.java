@@ -1,10 +1,8 @@
 package com.nougust3.a9goals;
 
 import android.content.Intent;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -16,13 +14,12 @@ public class MainActivity
         extends TiActivity<MainPresenter, MainView>
         implements MainView {
 
+    static final private int RESULT = 0;
+
+    private View fab;
     private FABToolbarLayout layout;
     private GoalsAdapter adapter;
-    private View fab;
-
     private MainPresenter presenter;
-
-    static final private int RESULT = 0;
 
     @NonNull
     @Override
@@ -34,10 +31,6 @@ public class MainActivity
 
     @Override
     public void updateGoalsList() {
-        if(adapter == null){
-            Log.i("G", "adapter is null");
-        }
-
         adapter.notifyDataSetChanged();
     }
 
@@ -121,6 +114,11 @@ public class MainActivity
 
     private void createDialog() {
         Intent intent = new Intent(this, GoalActivity.class);
+
+        intent.putExtra("MAIN_COUNT", presenter.countByType(1));
+        intent.putExtra("SECONDRY_COUNT", presenter.countByType(2));
+        intent.putExtra("OVER_COUNT", presenter.countByType(3));
+
         startActivityForResult(intent, RESULT);
     }
 
@@ -138,5 +136,11 @@ public class MainActivity
 
     void addGoal(String goalName, int goalType) {
         presenter.addGoal(goalName, goalType);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateGoalsList();
     }
 }

@@ -3,10 +3,9 @@ package com.nougust3.a9goals;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.util.Log;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -35,8 +34,18 @@ class Model {
         saveGoals();
     }
 
-    int getGoalsCount() {
+    int countGoals() {
         return goals.size();
+    }
+    
+    int countByType(int type) {
+        int count = 0;
+        for (Goal goal: goals) {
+            if(goal.getType() == type) {
+                count++;
+            }
+        }
+        return count;
     }
 
     void appendGoal(String goal, int type) {
@@ -49,6 +58,11 @@ class Model {
     void remove(int id) {
         goals.remove(id);
         saveGoals();
+    }
+
+    int getDate() {
+        Calendar calendar = Calendar.getInstance();
+        return calendar.get(Calendar.DAY_OF_WEEK);
     }
 
     void loadGoals() {

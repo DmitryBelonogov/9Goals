@@ -4,13 +4,12 @@ import net.grandcentrix.thirtyinch.TiView;
 import net.grandcentrix.thirtyinch.callonmainthread.CallOnMainThread;
 
 interface MainView extends TiView {
-
-    @CallOnMainThread
+    //@CallOnMainThread
     void updateGoalsList();
 
-    @CallOnMainThread
+    //@CallOnMainThread
     void hideAddButton();
 
-    @CallOnMainThread
+    //@CallOnMainThread
     void showAddButton();
 }

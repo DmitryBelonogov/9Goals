@@ -33,10 +33,24 @@ public class GoalActivity extends AppCompatActivity {
             public void onClick(View view) {
                 answerIntent.putExtra(GOAL, goalEdit.getText().toString());
                 setResult(RESULT_OK, answerIntent);
-                Log.i("kkgggkk", goalEdit.getText().toString());
                 finish();
             }
         });
+
+        radioMain.setChecked(true);
+        answerIntent.putExtra(TYPE, 1);
+
+        if(getIntent().getIntExtra("MAIN_COUNT", 0) >= 1) {
+            radioMain.setEnabled(false);
+            radioSecondary.setChecked(true);
+            answerIntent.putExtra(TYPE, 2);
+        }
+
+        if(getIntent().getIntExtra("SECONDARY_COUNT", 0) >= 3) {
+            radioSecondary.setEnabled(false);
+            radioOver.setChecked(true);
+            answerIntent.putExtra(TYPE, 3);
+        }
 
         radioMain.setOnClickListener(listener);
         radioSecondary.setOnClickListener(listener);
@@ -45,8 +59,8 @@ public class GoalActivity extends AppCompatActivity {
 
     View.OnClickListener listener = new View.OnClickListener() {
         @Override
-        public void onClick(View v) {
-            RadioButton rb = (RadioButton)v;
+        public void onClick(View view) {
+            RadioButton rb = (RadioButton) view;
             switch (rb.getId()) {
                 case R.id.radio_main: answerIntent.putExtra(TYPE, 1);
                     break;
@@ -54,9 +68,7 @@ public class GoalActivity extends AppCompatActivity {
                     break;
                 case R.id.radio_over: answerIntent.putExtra(TYPE, 3);
                     break;
-
-                default:
-                    break;
+                default: break;
             }
         }
     };
